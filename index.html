@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shape N Shine</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar page-container">
+    <div class="logo-wrap">
+      <img src="Logo.jpeg" alt="Shape N Shine Logo" class="logo" />
+    </div>
+
+    <nav class="nav-menu">
+      <a href="#home">Home</a>
+      <a href="#services">Our Services</a>
+      <a href="#about">About Us</a>
+      <a href="#shop">Buy Teas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="account-dropdown">
+        <button class="account-btn" id="accountBtn">Your Account ▾</button>
+        <div class="dropdown-menu" id="accountMenu">
+          <button class="dropdown-action" onclick="viewOrders()">My Orders</button>
+          <button class="dropdown-action" onclick="logoutUser()">Logout</button>
+        </div>
+      </div>
+
+      <div class="cart-box">
+        <button class="cart-btn" id="cartBtn" type="button" aria-label="Open cart">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+
+        <div class="cart-popup" id="cartPopup">
+          <div class="cart-popup-header">
+            <h4>Checkout</h4>
+            <button class="cart-close" id="cartClose" type="button">&times;</button>
+          </div>
+
+          <div id="cartItems" class="cart-items">
+            <p class="empty-cart">Nothing selected so far.</p>
+          </div>
+
+          <div class="cart-footer">
+            <div class="cart-total-row">
+              <span>Total</span>
+              <strong id="cartTotal">₹0</strong>
+            </div>
+
+            <button class="checkout-btn" id="checkoutBtn" type="button">
+              Continue to WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-carousel page-container" id="home">
+    <button class="hero-arrow hero-left" id="heroPrev">&#10094;</button>
+
+    <div class="hero-carousel-window">
+      <div class="hero-carousel-track" id="heroTrack">
+        <div class="hero-slide">
+          <img src="Car1.jpeg" alt="Slide 1" />
+          <button class="hero-slide-btn">Explore</button>
+        </div>
+        <div class="hero-slide">
+          <img src="Car2.jpeg" alt="Slide 2" />
+          <button class="hero-slide-btn">Explore</button>
+        </div>
+        <div class="hero-slide">
+          <img src="Car3.jpeg" alt="Slide 3" />
+          <button class="hero-slide-btn">Explore</button>
+        </div>
+        <div class="hero-slide">
+          <img src="Car4.jpeg" alt="Slide 4" />
+          <button class="hero-slide-btn">Explore</button>
+        </div>
+        <div class="hero-slide">
+          <img src="Car5.jpeg" alt="Slide 5" />
+          <button class="hero-slide-btn">Explore</button>
+        </div>
+        <div class="hero-slide">
+          <img src="Car6.jpeg" alt="Slide 6" />
+          <button class="hero-slide-btn">Explore</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="hero-arrow hero-right" id="heroNext">&#10095;</button>
+  </section>
+
+  <div class="services-wrapper page-container" id="services">
+    <h2 class="tea-title">Our Services</h2>
+    <p>Designed to fit your lifestyle, not disrupt it.</p>
+
+    <div class="quad-container">
+      <div class="quad quad1">
+        <div class="quad-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 12c2 4 10 4 12 0" />
+            <path d="M9 9c0 1.5-1 3-3 3" />
+          </svg>
+        </div>
+        <div class="quad-inner">
+          <h3>Holistic Workout Plans</h3>
+          <p>Workouts that adapt to your life — not the other way around.</p>
+        </div>
+      </div>
+
+      <div class="quad quad2">
+        <div class="quad-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="6" />
+            <circle cx="12" cy="12" r="2" />
+          </svg>
+        </div>
+        <div class="quad-inner">
+          <h3>Targeted Fitness Boost</h3>
+          <p>Precision training built for visible, measurable results.</p>
+        </div>
+      </div>
+
+      <div class="quad quad3">
+        <div class="quad-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 8h10v6a4 4 0 0 1-8 0V8z" />
+            <path d="M16 10h2a2 2 0 1 1 0 4h-2" />
+          </svg>
+        </div>
+        <div class="quad-inner">
+          <h3>Energy‑Boosting Teas</h3>
+          <p>Blend, sip, recharge — wellness in every cup.</p>
+        </div>
+      </div>
+
+      <div class="quad quad4">
+        <div class="quad-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 4c4 4 6 6 6 10a6 6 0 1 1-12 0c0-4 2-6 6-10z" />
+          </svg>
+        </div>
+        <div class="quad-inner">
+          <h3>Wellness Guidance</h3>
+          <p>Simple habits that create lasting transformation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="serviceModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+  <section class="cta-section page-container">
+    <h2>Ready to Begin Your Wellness Journey?</h2>
+    <p>No pressure. Just a conversation that could change everything.</p>
+
+    <a
+      href="https://wa.me/919111107790?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services"
+      target="_blank"
+      class="cta-button"
+    >
+      Chat on WhatsApp
+    </a>
+  </section>
+
+  <section class="about-section page-container" id="about">
+    <h2 class="tea-title">About Us</h2>
+    <p>We are built on trust &amp; companionship</p>
+
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="aboutus.jpg" alt="Founder" />
+        <div class="about-logo">
+          <img src="Logo.jpeg" alt="Shape N Shine Logo" />
+        </div>
+      </div>
+
+      <div class="about-content">
+        <h2>Your Transformation Is Personal to Us</h2>
+
+        <div class="about-story">
+          <p>
+            More than 18 years ago, Shape N Shine began with a simple idea — and a powerful dream in the heart.
+            <strong>A dream to change lives. One person at a time.</strong>
+            What started as a personal mission soon became a journey shared with thousands — guiding, supporting, and transforming individuals into the strongest and most confident versions of themselves.
+          </p>
+
+          <p>
+            Over time, we have had the privilege of supporting 1000+ happy clients, each with their own path and transformation. And through every journey, one belief has stayed constant — real change comes from care, consistency, and the right guidance.
+          </p>
+
+          <p>
+            At Shape N Shine, we believe in keeping wellness natural and authentic. Our focus is on holistic practices and sustainable habits that help you feel stronger — not just physically, but mentally and emotionally.
+          </p>
+        </div>
+
+        <div class="about-highlight">
+          From one dream to thousands of transformations — and still growing, one life at a time.
+        </div>
+
+        <p class="about-quote">
+          “My mission is simple — to help you believe in yourself and create a life you're proud of.”
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tea-section" id="shop">
+    <div class="page-container">
+      <h2 class="tea-title">Choose Your Blend</h2>
+      <p class="tea-subtitle">
+        Four signature blends, each crafted for a different mood, moment, and need.
+      </p>
+
+      <div class="tea-grid">
+        <article class="tea-card" data-id="tea1" data-name="Berry Happy" data-price="499">
+          <div class="tea-image-wrap">
+            <img src="berry-happy.jpeg" alt="Berry Happy" class="tea-image" />
+          </div>
+          <h3>Berry Happy</h3>
+          <div class="tea-type">Fruit &amp; Green Tea Blend</div>
+          <p class="tea-desc">
+            A refreshing fruity infusion blended with green tea to bring joy, energy, and a natural sparkle to your day.
+          </p>
+          <div class="tea-meta"><span class="tea-price">₹499</span></div>
+          <button class="tea-btn add-btn" type="button">Add to Cart</button>
+          <div class="qty-control">
+            <button class="qty-btn minus" type="button">−</button>
+            <span class="qty-value">0</span>
+            <button class="qty-btn plus" type="button">+</button>
+          </div>
+        </article>
+
+        <article class="tea-card" data-id="tea2" data-name="Bliss" data-price="529">
+          <div class="tea-image-wrap">
+            <img src="bliss-tea.jpeg" alt="Bliss" class="tea-image" />
+          </div>
+          <h3>Bliss</h3>
+          <div class="tea-type">Contentment Tea</div>
+          <p class="tea-desc">
+            A calming blend designed to bring harmony, softness, and a deeper sense of repose to your day.
+          </p>
+          <div class="tea-meta"><span class="tea-price">₹529</span></div>
+          <button class="tea-btn add-btn" type="button">Add to Cart</button>
+          <div class="qty-control">
+            <button class="qty-btn minus" type="button">−</button>
+            <span class="qty-value">0</span>
+            <button class="qty-btn plus" type="button">+</button>
+          </div>
+        </article>
+
+        <article class="tea-card" data-id="tea3" data-name="Uplift" data-price="549">
+          <div class="tea-image-wrap">
+            <img src="Uplift-tea.jpeg" alt="Uplift" class="tea-image" />
+          </div>
+          <h3>Uplift</h3>
+          <div class="tea-type">Morning Wellness Tea</div>
+          <p class="tea-desc">
+            A vibrant morning blend created to energize the body, sharpen focus, and begin the day with positivity.
+          </p>
+          <div class="tea-meta"><span class="tea-price">₹549</span></div>
+          <button class="tea-btn add-btn" type="button">Add to Cart</button>
+          <div class="qty-control">
+            <button class="qty-btn minus" type="button">−</button>
+            <span class="qty-value">0</span>
+            <button class="qty-btn plus" type="button">+</button>
+          </div>
+        </article>
+
+        <article class="tea-card" data-id="tea4" data-name="Zen" data-price="519">
+          <div class="tea-image-wrap">
+            <img src="Zen-tea.jpeg" alt="Zen" class="tea-image" />
+          </div>
+          <h3>Zen</h3>
+          <div class="tea-type">Evening Calm Tea</div>
+          <p class="tea-desc">
+            A soothing evening blend crafted to quiet the mind, ease the body, and leave you with peace and reflection.
+          </p>
+          <div class="tea-meta"><span class="tea-price">₹519</span></div>
+          <button class="tea-btn add-btn" type="button">Add to Cart</button>
+          <div class="qty-control">
+            <button class="qty-btn minus" type="button">−</button>
+            <span class="qty-value">0</span>
+            <button class="qty-btn plus" type="button">+</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="tea-quiz-banner">
+        <p>Not sure which blend fits you best?</p>
+        <button onclick="openQuiz()">Take the Tea Match Quiz →</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="orders-popup" id="ordersPopup">
+    <div class="orders-box">
+      <button class="close-orders" onclick="closeOrdersPopup()">×</button>
+      <h3>My Orders</h3>
+      <div id="ordersContent">
+        <p>No orders yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-popup" id="quizPopup">
+    <div class="quiz-box">
+      <button class="close-quiz" type="button" onclick="closeQuiz()">×</button>
+
+      <div class="quiz-header">
+        <div class="quiz-kicker">Tea Match Quiz</div>
+        <h3>Find Your Perfect Tea</h3>
+        <p class="quiz-subtitle">Answer a few quick questions and we’ll match you to your ideal blend.</p>
+      </div>
+
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-bar">
+          <span id="quizProgressFill"></span>
+        </div>
+        <div class="quiz-progress-text" id="quizProgressText">Question 1 of 5</div>
+      </div>
+
+      <div id="quizContent"></div>
+
+      <div class="quiz-actions" id="quizActions" style="display: none;">
+        <button class="quiz-secondary-btn" type="button" onclick="retryQuiz()">Retake Quiz</button>
+        <button class="quiz-primary-btn" type="button" onclick="closeQuiz()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-section" id="contact">
+    <img src="Footer.jpeg" class="footer-bg" alt="Footer Background" />
+    <div class="footer-overlay"></div>
+
+    <div class="footer-container">
+
+      <div class="footer-buttons">
+        <a href="https://wa.me/919111107790" target="_blank" class="footer-btn whatsapp">Chat on WhatsApp</a>
+        <a href="https://instagram.com/YOUR_HANDLE" target="_blank" class="footer-btn instagram">Follow on Instagram</a>
+        <a href="mailto:your@email.com" class="footer-btn email">Email Us</a>
+      </div>
+
+      <p class="footer-copy">
+        © Shape N Shine — Stronger Body. Healthier Mind. Happier You.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
